@@ -7,7 +7,7 @@
     --clr-light-gray: rgb(230, 230, 245);
     --clr-dark-shadow-5: rgba(0, 0, 10, 5%);
     --clr-dark-shadow-10: rgba(0, 0, 10, 10%);
-    --clr-dark-shadow-20: rgba(0, 0, 10, 20%);
+    --clr-dark-shadow-20: rgba(0, 0, 10, 20%);  
     --clr-light-shadow-5: rgba(200, 200, 255, 5%);
     --clr-light-shadow-10: rgba(200, 200, 255, 10%);
     --clr-light-shadow-20: rgba(200, 200, 255, 20%);
@@ -122,7 +122,7 @@ svg {
 }
 
 .table-caption {
-    font-size: var(--medium-font-size);
+    font-size: calc(var(--medium-font-size) * 1.5);
     font-weight: bold;
     padding: var(--spacing);
 }

@@ -46,7 +46,7 @@ def search(request):
     # Caso o usuário escreveu um número no input, ele também busca pelo id
     if search_value.isdigit():
         queries |= Q(id__exact=search_value) # Retorna somente quando o id for EXATO
-        
+
     contacts = contacts \
         .filter(queries) \
         .order_by('id') \
@@ -55,16 +55,16 @@ def search(request):
     context = {
         'contacts': contacts,
         'site_title': 'Search - ',
+        'search_value': search_value,
     }
     return render(request, 'contact/index.html', context)
-
 
 def contact(request, contact_id):
     # single_contact = Contact.objects.filter(pk=contact_id).first()
     # if single_contact is None:
     #     raise Http404
     
-    # > Os dois fazem a mesma coisa ^v
+    # Os dois fazem a mesma coisa ^v
     
     single_contact = get_object_or_404( # Isso chama somente contatos onde a pk é igual o contact_id e o show é True
         Contact,
