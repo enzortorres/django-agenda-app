@@ -100,4 +100,7 @@ def contact(request, contact_id):
         'site_title': title_name,
     }
     
+    print("contato: ", single_contact.picture)
+    
     return render(request, 'contact/contact.html', context)
+

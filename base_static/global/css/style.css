@@ -3,7 +3,7 @@
     --link-dark-color: rgb(190, 120, 14);
     --link-light-color: rgb(238, 148, 15);
     --clr-white: rgb(245, 245, 255);
-    --clr-black: rgb(0, 0, 30);
+    --clr-black: rgb(33, 33, 33);
     --clr-light-gray: rgb(230, 230, 245);
     --clr-bg-filter: rgb(230, 230, 245);
     --clr-dark-shadow-5: rgba(0, 0, 10, 5%);
@@ -170,9 +170,14 @@ svg {
 
 @media (min-width: 600px) {
     .single-contact {
-    max-width: 80%;
-    margin: calc(var(--spacing) * 2) auto;
+        max-width: 80%;
+        margin: calc(var(--spacing) * 2) auto;
     }
+}
+
+.single-contact {
+    display: flex;
+    justify-content: space-between;
 }
 
 .single-contact h1 {
@@ -181,6 +186,13 @@ svg {
 
 .single-contact p {
     margin: 1rem 0;
+    max-width: 350px;
+    word-wrap: break-word;
+}
+
+.contact-picture {
+    width: 250px;
+    height: 250px;
 }
 
 .pagination {
