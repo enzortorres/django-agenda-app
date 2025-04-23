@@ -223,7 +223,26 @@ svg {
 
 .search-container {
     display: flex;
+    align-items: center;
     gap: 1.2rem;
+}
+
+.submit-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 48px;
+    height: 48px;
+}
+
+.submit-container .submit-input {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background: transparent;
+    border: 0;
+    appearance: none;
+    cursor: pointer;
 }
 
 #overlay {
