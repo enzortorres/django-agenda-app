@@ -1,10 +1,11 @@
 :root {
     --spacing: 1.5rem;
-    --link-dark-color: rgb(0, 83, 134);
-    --link-light-color: rgb(156, 217, 255);
+    --link-dark-color: rgb(190, 120, 14);
+    --link-light-color: rgb(238, 148, 15);
     --clr-white: rgb(245, 245, 255);
     --clr-black: rgb(0, 0, 30);
     --clr-light-gray: rgb(230, 230, 245);
+    --clr-bg-filter: rgb(230, 230, 245);
     --clr-dark-shadow-5: rgba(0, 0, 10, 5%);
     --clr-dark-shadow-10: rgba(0, 0, 10, 10%);
     --clr-dark-shadow-20: rgba(0, 0, 10, 20%);  
@@ -56,10 +57,19 @@ svg {
 
 .header {
     background: var(--clr-black);
-    padding: var(--spacing);
     box-shadow: 0 5px 10px 2px var(--clr-dark-shadow-20);
     z-index: 1;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+}
+
+@media (max-width: 850px) {
+    .header-heading {
+        display: none;
+    }
 }
 
 .header-heading {
@@ -77,34 +87,31 @@ svg {
     filter: brightness(70%);
 }
 
-.menu {
-    margin: var(--spacing);
-}
-
 .menu-list {
     list-style: none;
     display: flex;
     justify-content: center;
     flex-flow: row wrap;
+    gap: 5px;
 }
 
 .menu-link {
     display: block;
-    padding: var(--spacing);
     color: var(--link-light-color);
+    padding: 5px 10px;
     text-decoration: none;
-    transition: background-color var(--transition-fast) ease-in-out;
-    border-radius: var(--default-border-radius);
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
 }
 
 .menu-link:hover {
-    background: var(--clr-light-shadow-10);
+    border-bottom: 1px solid var(--link-light-color);
 }
 
 .content {
     max-width: var(--main-page-width);
     margin: calc(var(--spacing) * 2) auto;
-    padding: var(--spacing);
+    padding: 5px 10px;
     background: var(--clr-white);
     box-shadow: 2px 2px 5px var(--clr-dark-shadow-20);
     border-radius: var(--default-border-radius);
@@ -124,7 +131,7 @@ svg {
 .table-caption {
     font-size: calc(var(--medium-font-size) * 1.5);
     font-weight: bold;
-    padding: var(--spacing);
+    padding-bottom: 10px;
 }
 
 .table-row {
@@ -203,7 +210,7 @@ svg {
 
 .search-input {
     font-size: var(--medium-font-size);
-    padding: 1rem 2rem;
+    padding: 0.5rem 1rem;
     width: 100%;
     max-width: 32rem;
     border-radius: var(--default-border-radius);
@@ -212,6 +219,91 @@ svg {
 
 .search-input:focus {
     box-shadow: 0 0 15px var(--link-light-color);
+}
+
+.search-container {
+    display: flex;
+    gap: 1.2rem;
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 998;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+#overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.filter {
+    position: fixed;
+    right: -310px;
+    top: 0px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px 0px 0px 5px;
+    padding: 15px 30px;
+    background: var(--clr-bg-filter);
+    z-index: 999;
+    height: 100vh;
+    width: 31rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    user-select: none;
+    gap: 10px;
+    transition: right 0.1s ease-in-out;
+}
+
+#filter-icon {
+    cursor: pointer;
+}
+
+#close-filter {
+    position: absolute;
+    cursor: pointer;
+    top: 5px;
+    right: 5px;
+}
+
+.checkbox-container {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 5px;
+}
+
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox-wrapper .checkmark {
+    width: 12rem;
+    padding: 8px 12px;
+    border: 2px solid #ccc;
+    border-radius: 30px;
+    background-color: white;
+    transition: 0.3s;
+}
+
+.checkbox-wrapper input[type="checkbox"]:checked + .checkmark {
+    background-color: var(--link-light-color);
+    color: white;
+    border-color: var(--link-dark-color);
 }
 
 .message {

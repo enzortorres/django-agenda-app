@@ -6,16 +6,21 @@ from django.db.models.functions import Concat
 from django.db.models import Q, Value # (Q) serve para fazer consultas mais complexas, possibilitando utilizar operadores lógicos
 # AND (&), OR (|), NOT (~)
 
+from django.core.paginator import Paginator
+
 from django.http import Http404
 
 def index(request):
     contacts = Contact.objects \
         .filter(show=True) \
         .order_by('id') \
-        [0:10]
     
+    paginator = Paginator(contacts, 10) # Pega 10 contatos por página
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
     context = {
-        'contacts': contacts,
+        'page_obj': page_obj,
         'site_title': 'Contacts - ',
     }
     
@@ -23,6 +28,7 @@ def index(request):
 
 def search(request):
     search_value = request.GET.get('query', '').strip()
+    selected_filters = request.GET.getlist("filter")
     
     # Se digitar nada no input ele retorna para a home
     if search_value == '':
@@ -32,30 +38,45 @@ def search(request):
     contacts = Contact.objects.filter(show=True)
     
     # Adiciona o campo full_name como uma concatenação de first_name e last_name
-    contacts = contacts.annotate( 
-        full_name = Concat('first_name', Value(' '), 'last_name')
-    )
+    contacts = contacts.annotate(full_name = Concat('first_name', Value(' '), 'last_name'))
     
-    # Cria as queries para os campos selecionados
-    queries  =  Q(first_name__icontains=search_value) | \
-                Q(last_name__icontains=search_value) | \
-                Q(phone__icontains=search_value) | \
-                Q(full_name__icontains=search_value) | \
-                Q(email__icontains=search_value)
+    queries = Q()
+    if "id" in selected_filters and search_value.isdigit():
+        queries |= Q(id__exact=search_value)
+    if "first_name" in selected_filters:
+        queries |= Q(first_name__icontains=search_value)
+    if "last_name" in selected_filters:
+        queries |= Q(last_name__icontains=search_value)
+    if "phone" in selected_filters:
+        queries |= Q(phone__icontains=search_value)
+    if "email" in selected_filters:
+        queries |= Q(email__icontains=search_value)
     
-    # Caso o usuário escreveu um número no input, ele também busca pelo id
-    if search_value.isdigit():
-        queries |= Q(id__exact=search_value) # Retorna somente quando o id for EXATO
+    if not selected_filters:
+        # Cria as queries para os campos selecionados
+        queries  =  Q(first_name__icontains=search_value) | \
+                    Q(last_name__icontains=search_value) | \
+                    Q(phone__icontains=search_value) | \
+                    Q(full_name__icontains=search_value) | \
+                    Q(email__icontains=search_value)
+        
+        # Caso o usuário escreveu um número no input, ele também busca pelo id
+        if search_value.isdigit():
+            queries |= Q(id__exact=search_value) # Retorna somente quando o id for EXATO
 
     contacts = contacts \
         .filter(queries) \
         .order_by('id') \
-        [0:10]
+
+    paginator = Paginator(contacts, 10) # Pega 10 contatos por página
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
     
     context = {
-        'contacts': contacts,
+        'page_obj': page_obj,
         'site_title': 'Search - ',
         'search_value': search_value,
+        'selected_filters': selected_filters,
     }
     return render(request, 'contact/index.html', context)
 

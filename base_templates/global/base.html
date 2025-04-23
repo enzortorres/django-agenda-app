@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'global/css/style.css' %}">
+    <link rel="shortcut icon" href="{% static 'global/src/icons/favicon.png' %}" type="image/x-icon">
     <title>{{ site_title }}Agenda</title>
 </head>
 <body>
@@ -12,6 +13,8 @@
 
     <main class="content">
         {% block content %}{% endblock content %}
+        {% include "global/partials/_pagination.html" %}
     </main>
+
 </body>
 </html>

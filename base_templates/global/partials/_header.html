@@ -1,9 +1,53 @@
+{% load static %}
 <header class="header">
     <h1 class="header-heading">
         <a href="{% url 'contact:index' %}" class="header-link">
             Agenda
         </a>
     </h1>
+    <div class="search">
+        <form action="{% url 'contact:search' %}" method="GET">
+            <span class="search-container">
+                <input
+                    type="search"
+                    class="search-input"
+                    placeholder="Search"
+                    id="search"
+                    name="query"
+                    value="{{ request.GET.query.strip }}"
+                    >
+                    <img src="{% static 'global/src/icons/filter-regular-48.png' %}" alt="" id="filter-icon"
+                >
+            </span>
+            <div id="overlay"></div>
+            <div class="filter">
+                <h3>Filter</h3>
+                <img src="{% static 'global/src/icons/x-regular-36.png' %}" alt="X" id="close-filter">
+                <span class="checkbox-container">
+                    <label class="checkbox-wrapper">
+                        <input type="checkbox" name="filter" value="id" {% if "id" in selected_filters %}checked{% endif %}>
+                        <span class="checkmark">ID</span>
+                    </label>
+                    <label class="checkbox-wrapper">
+                        <input type="checkbox" name="filter" value="first_name" {% if "first_name" in selected_filters %}checked{% endif %}>
+                        <span class="checkmark">First Name</span>
+                    </label>
+                    <label class="checkbox-wrapper">
+                        <input type="checkbox" name="filter" value="last_name" {% if "last_name" in selected_filters %}checked{% endif %}>
+                        <span class="checkmark">Last Name</span>
+                    </label>
+                    <label class="checkbox-wrapper">
+                        <input type="checkbox" name="filter" value="phone" {% if "phone" in selected_filters %}checked{% endif %}>
+                        <span class="checkmark">Phone</span>
+                    </label>
+                    <label class="checkbox-wrapper">
+                        <input type="checkbox" name="filter" value="email" {% if "email" in selected_filters %}checked{% endif %}>
+                        <span class="checkmark">E-mail</span>
+                    </label>
+                </span>
+            </div>
+        </form>
+    </div>
     <nav class="menu">
         <ul class="menu-list">
             <li class="menu-item">
@@ -17,17 +61,6 @@
             </li>
         </ul>
     </nav>
-
-    <div class="search">
-        <form action="{% url 'contact:search' %}" method="GET">
-            <input
-                type="search" 
-                class="search-input" 
-                placeholder="Search" 
-                id="search" 
-                name="query"
-                value="{{ request.GET.query.strip }}"
-            >
-        </form>
-    </div>
 </header>
+
+<script src="{% static "global/js/search_filter.js" %}"></script>
