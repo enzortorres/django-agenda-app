@@ -1,28 +1,31 @@
+from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
+from django.contrib.auth.models import User
 from contact.models import Contact
 from django import forms
 
 class ContactForm(forms.ModelForm):
-    first_name = forms.CharField(
-        widget=forms.TextInput(
+    picture = forms.ImageField(
+        required=False,
+        widget=forms.FileInput(
             attrs={
-                'placeholder': 'First Name',
-            } 
-        ),
-        label='First name',
-        help_text='Type your first name.',
+                'accept': 'image/*',
+            }
+        )
+    )    
+    description = forms.CharField(
+        required=False,
+        widget=forms.Textarea(
+            attrs={
+                'style': 'resize: vertical; min-height: 39px; max-height: 200px;',
+                'rows': 4,
+            }
+        )
     )
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        
-        # self.fields['first_name'].widget.attrs.update({
-        #     'placeholder': 'First Name'
-        # })
     
     class Meta:
         model = Contact
-        fields = ('first_name', 'last_name', 'phone', 'email', 'description', 'category')
+        fields = ('first_name', 'last_name', 'phone', 'email', 'description', 'category', 'picture',)
         # widgets = {
         #     'first_name': forms.TextInput(
         #             attrs={
@@ -58,3 +61,25 @@ class ContactForm(forms.ModelForm):
             )
         
         return first_name
+    
+class RegisterForm(UserCreationForm):
+    first_name = forms.CharField(
+        required=True,
+        min_length=3,
+    )
+    email = forms.EmailField(
+        required=True
+    )
+    
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'email', 'username', 'password1', 'password2',)
+    
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if User.objects.filter(email=email).exists():
+            self.add_error(
+                'email',
+                ValidationError('A user with that email already exists.', code='invalid'),
+            )
+        return email

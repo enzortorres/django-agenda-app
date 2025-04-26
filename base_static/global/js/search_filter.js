@@ -1,4 +1,4 @@
-const filter_icon = document.getElementById("filter-icon");
+const filter_icon = document.querySelector(".img-filter");
 const close_filter = document.getElementById("close-filter");
 const overlay = document.getElementById("overlay");
 const filter = document.querySelector(".filter");

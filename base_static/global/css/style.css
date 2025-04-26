@@ -195,6 +195,7 @@ svg {
     height: 250px;
 }
 
+
 .pagination {
     margin-top: var(--spacing);
     display: flex;
@@ -295,7 +296,24 @@ svg {
     transition: right 0.1s ease-in-out;
 }
 
-#filter-icon {
+.count-filters {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--smallest-font-size);
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--link-light-color);
+    border: 1px solid #212121;
+    color: #fff;
+    position: absolute;
+    top: 2px;
+    right: -2px;
+}
+
+.img-filter {
+    position: relative;
     cursor: pointer;
 }
 
@@ -360,6 +378,11 @@ svg {
 .message.warning {
     background: rgba(255, 255, 0, 0.3);
     border: 1px solid rgba(255, 255, 0, 90%);
+}
+
+.message.info {
+    background: rgba(0, 0, 255, 0.3);
+    border: 1px solid rgba(0, 0, 255, 90%);
 }
 
 .form-wrapper {
@@ -436,4 +459,24 @@ svg {
 .btn:active {
     filter: brightness(80%);
     box-shadow: 0 0 5px var(--link-dark-color);
+}
+
+.contact-links {
+    margin-block: calc(var(--small-font-size) * 2);
+    display: flex;
+    align-items: center;
+    gap: 0 var(--spacing);
+}
+
+.btn-link {
+    font-size: var(--small-font-size);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 1rem;
+    display: block;
+    line-height: var(--small-font-size);
+}
+
+.btn-delete {
+    background: tomato;
 }

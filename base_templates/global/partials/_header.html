@@ -20,7 +20,10 @@
                     <input type="submit" class="submit-input" value="">
                     <img src="{% static 'global/src/icons/search-regular-48.png' %}" alt="" id="search-button">
                 </span>
-                <img src="{% static 'global/src/icons/filter-regular-48.png' %}" alt="" id="filter-icon">
+                <div class="img-filter">
+                    <img src="{% static 'global/src/icons/filter-regular-48.png' %}" alt="" id="filter-icon">
+                    <div class="count-filters">{{ len_selected_filters }}</div>
+                </div>
             </span>
             <div id="overlay"></div>
             <div class="filter">
@@ -28,23 +31,23 @@
                 <img src="{% static 'global/src/icons/x-regular-36.png' %}" alt="X" id="close-filter">
                 <span class="checkbox-container">
                     <label class="checkbox-wrapper">
-                        <input type="checkbox" name="filter" value="id" {% if "id" in selected_filters %}checked{% endif %}>
+                        <input type="checkbox" name="filter" value="id" class="filter-checkbox" {% if "id" in selected_filters %}checked{% endif %}>
                         <span class="checkmark">ID</span>
                     </label>
                     <label class="checkbox-wrapper">
-                        <input type="checkbox" name="filter" value="first_name" {% if "first_name" in selected_filters %}checked{% endif %}>
+                        <input type="checkbox" name="filter" value="first_name" class="filter-checkbox" {% if "first_name" in selected_filters %}checked{% endif %}>
                         <span class="checkmark">First Name</span>
                     </label>
                     <label class="checkbox-wrapper">
-                        <input type="checkbox" name="filter" value="last_name" {% if "last_name" in selected_filters %}checked{% endif %}>
+                        <input type="checkbox" name="filter" value="last_name" class="filter-checkbox" {% if "last_name" in selected_filters %}checked{% endif %}>
                         <span class="checkmark">Last Name</span>
                     </label>
                     <label class="checkbox-wrapper">
-                        <input type="checkbox" name="filter" value="phone" {% if "phone" in selected_filters %}checked{% endif %}>
+                        <input type="checkbox" name="filter" value="phone" class="filter-checkbox" {% if "phone" in selected_filters %}checked{% endif %}>
                         <span class="checkmark">Phone</span>
                     </label>
                     <label class="checkbox-wrapper">
-                        <input type="checkbox" name="filter" value="email" {% if "email" in selected_filters %}checked{% endif %}>
+                        <input type="checkbox" name="filter" value="email" class="filter-checkbox" {% if "email" in selected_filters %}checked{% endif %}>
                         <span class="checkmark">E-mail</span>
                     </label>
                 </span>
@@ -63,4 +66,5 @@
     </nav>
 </header>
 
+<script src="{% static "global/js/filter_counter.js" %}"></script>
 <script src="{% static "global/js/search_filter.js" %}"></script>

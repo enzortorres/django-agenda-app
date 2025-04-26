@@ -28,7 +28,9 @@ def index(request):
 
 def search(request):
     search_value = request.GET.get('query', '').strip()
-    selected_filters = request.GET.getlist("filter")
+    selected_filters = request.GET.getlist("filter") # Pega todos os valores dos inputs com name "filter"
+    len_selected_filters = len(selected_filters)
+    print(len_selected_filters)
     
     # Se digitar nada no input ele retorna para a home
     if search_value == '':
@@ -77,6 +79,7 @@ def search(request):
         'site_title': 'Search - ',
         'search_value': search_value,
         'selected_filters': selected_filters,
+        'len_selected_filters': len_selected_filters,
     }
     return render(request, 'contact/index.html', context)
 
