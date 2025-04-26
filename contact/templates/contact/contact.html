@@ -12,9 +12,16 @@
             <p><b>Created date:</b> {{ contact.created_date }}</p>
             <p class="single-contact-description"><b>Description:</b> {{ contact.description }}</p>
             <p><b>Category:</b> {{ contact.category.name }}</p>
+            <div class="contact-links">
+                <a class="btn btn-link" href="{% url 'contact:update' contact.id %}">Update</a>
+                <form action="" method="POST">
+                    
+                </form>
+            </div>
         </div>
         {% if contact.picture %}
             <img src="{{ contact.picture.url }}" alt="Foto de {{ contact.first_name }}" class="contact-picture">
         {% endif %}
+
     </div>
 {% endblock content %}
