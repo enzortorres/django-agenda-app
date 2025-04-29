@@ -11,9 +11,9 @@ Este é um projeto de Agenda de Contatos desenvolvido em Django, com o objetivo 
 ○ Faker — Para geração de dados aleatórios de teste
 ```
 
-<h1>
+<h2>
     ⚙️ Como rodar o projeto
-</h1>
+</h2>
 
 1. Clone o repositório:
 ```
@@ -48,9 +48,9 @@ python manage.py runserver
 http://127.0.0.1:8000/
 ```
 
-<h1>
+<h2>
     📋 Funcionalidades
-</h1>
+</h2>
 
 ```
 ○ Cadastro de contatos
