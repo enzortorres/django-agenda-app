@@ -145,7 +145,8 @@ Upload contact profile picture (using Pillow)
 </h2>
 
 ```
-The utils/create_contacts.py script uses Faker to generate random contacts for testing. Make sure the Pillow library is installed to handle images.
+The utils/create_contacts.py script uses Faker to generate random contacts for testing.
+ Make sure the Pillow library is installed to handle images.
 ```
 
 
