@@ -14,7 +14,7 @@ Faker — Para geração de dados aleatórios de teste
 
 1. Clone o repositório:
 ```
-git clone https://github.com/seu-usuario/seu-repositorio.git
+git clone https://github.com/enzortorres/django-agenda-app.git
 ```
 
 2. Instale as dependências:
@@ -96,7 +96,7 @@ Faker — For generating random test data
 
 1. Clone the repository
 ```
-git clone https://github.com/seu-usuario/seu-repositorio.git
+git clone https://github.com/enzortorres/django-agenda-app.git
 ```
 
 2. Install the dependencies:
