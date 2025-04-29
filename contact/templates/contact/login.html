@@ -5,10 +5,11 @@
         <h2>Login</h2>
 
         {% if user.is_authenticated %}
-            <p>Você fez login como {{ user.username }}</p>
-            Clique <a href="{% url "contact:logout" %}">aqui</a> para sair.
+            <p>You are logged in as {{ user.username }}</p>
+            Click <a href="{% url "contact:logout" %}">here</a> to exit.
         {% else %}
             {% include "contact/partials/_user-form.html" %}
+            <p>Don't have an account? Click <a href="{% url "contact:register" %}">here</a> to register</p>
         {% endif %}
     </div>
 {% endblock content %}
