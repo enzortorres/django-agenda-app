@@ -3,6 +3,7 @@ static_files/
 static/
 media/
 project/local_settings.py
+README.md.study
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

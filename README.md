@@ -1,85 +1,158 @@
-Iniciar o projeto Django
+📒 Projeto Agenda (PT-BR)
+Este é um projeto de Agenda de Contatos desenvolvido em Django, com o objetivo de praticar e aplicar conceitos de CRUD (Create, Read, Update e Delete).
 
+🚀 Tecnologias utilizadas
 ```
-python -m venv venv
-. venv/bin/activate
-pip install django
-django-admin startproject project .
-python manage.py startapp contact
-```
-
-Configurar o git
-
-```
-git config --global user.name 'Seu nome'
-git config --global user.email 'seu_email@gmail.com'
-git config --global init.defaultBranch main
-
-# Configure o .gitignore
-
-git init
-git add .
-git commit -m 'Mensagem'
-git remote add origin URL_DO_GIT
+Django — Framework web principal
+Pillow — Para manipulação de imagens (ex: fotos dos contatos)
+Faker — Para geração de dados aleatórios de teste
 ```
 
-Migrando a base de dados do Django
+<h1>
+    ⚙️ Como rodar o projeto
+</h1>
 
+1. Clone o repositório:
 ```
-python manage.py makemigrations
+git clone https://github.com/seu-usuario/seu-repositorio.git
+```
+
+2. Instale as dependências:
+```
+pip install -r requirements.txt
+```
+
+
+3. Aplique as migrações:
+```
 python manage.py migrate
 ```
 
-Criando e modificando a senha de um super usuário Django
+(Opcional) Gere dados de teste:
 
 ```
-python manage.py createsuperuser
-python manage.py changepassword USERNAME
+python utils/create_contacts.py
 ```
 
-Trabalhando com o model do Django
+4. Inicie o servidor de desenvolvimento:
+```
+python manage.py runserver
+```
+
+5. Acesse no navegador:
 
 ```
-# Importe o módulo
+http://127.0.0.1:8000/
+```
 
-from contact.models import Contact
+<h1>
+    📋 Funcionalidades
+</h1>
 
-# Cria um contato (Lazy)
-# Retorna o contato
+```
+Cadastro de contatos
+Listagem de contatos
+Edição de contatos
+Exclusão de contatos
+Busca de contatos
+Upload de foto de perfil (usando Pillow)
+```
 
-contact = Contact(**fields)
-contact.save()
+<h2>
+    📎 Observações
+</h2>
 
-# Cria um contato (Não lazy)
-# Retorna o contato
+```
+O script utils/create_contacts.py utiliza o Faker para gerar contatos aleatórios para testes.
+Certifique-se que a biblioteca Pillow está instalada para gerenciar imagens.
+```
 
-contact = Contact.objects.create(**fields)
 
-# Seleciona um contato com id 10
-# Retorna o contato
+<h2>
+    📄 Licença
+</h2>
 
-contact = Contact.objects.get(pk=10)
+```
+Este projeto é apenas para fins de estudo.
+```
 
-# Edita um contato
-# Retorna o contato
 
-contact.field_name1 = 'Novo valor 1'
-contact.field_name2 = 'Novo valor 2'
-contact.save()
 
-# Apaga um contato
-# Depende da base de dados, geralmente retorna o número
-# de valores manipulados na base de dados
+<h1>
+    📒 Contacts Agenda Project (EN)
+</h1>
+This is a Contacts Agenda project developed with Django, aiming to practice and apply CRUD (Create, Read, Update, and Delete) concepts.
 
-contact.delete()
+🚀 Technologies used
+```
+Django — Main web framework
+Pillow — For image handling (e.g., contact profile pictures)
+Faker — For generating random test data
+```
 
-# Seleciona todos os contatos ordenando por id DESC
-# Retorna QuerySet[]
+<h2>
+    ⚙️ How to run the project
+</h2>
 
-contacts = Contact.objects.all().order_by('-id')
+1. Clone the repository
+```
+git clone https://github.com/seu-usuario/seu-repositorio.git
+```
 
-# Seleciona contatos usando filtros
-# Retorna QuerySet[]
+2. Install the dependencies:
+```
+pip install -r requirements.txt
+```
 
-contacts = Contact.objects.filter(**filters).order_by('-id')
+
+3. Apply the migrations:
+```
+python manage.py migrate
+```
+
+(Optional) Generate test data:
+
+```
+python utils/create_contacts.py
+```
+
+4. Start the development server:
+```
+python manage.py runserver
+```
+
+5. Acess in your browser:
+
+```
+http://127.0.0.1:8000/
+```
+
+<h2>
+    📋 Features
+</h2>
+
+```
+Create new contacts
+List all contacts
+Edit existing contacts
+Delete contacts 
+Search for contacts 
+Upload contact profile picture (using Pillow)
+```
+
+<h2>
+    📎 Notes
+</h2>
+
+```
+The utils/create_contacts.py script uses Faker to generate random contacts for testing. Make sure the Pillow library is installed to handle images.
+```
+
+
+<h2>
+    📄 License
+</h2>
+
+```
+This project is for educational purposes only.
 ```
