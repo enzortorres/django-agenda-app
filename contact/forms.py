@@ -97,7 +97,6 @@ class RegisterUpdateForm(forms.ModelForm):
     last_name = forms.CharField(
         min_length=2, max_length=30,
         required=True,
-        help_text='Required.',
     )
     password1 = forms.CharField(
         label="Password",

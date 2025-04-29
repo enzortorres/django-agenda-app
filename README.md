@@ -1,11 +1,14 @@
-📒 Projeto Agenda (PT-BR)
+<h1>
+    📒 Projeto Agenda (PT-BR)
+</h1>
+
 Este é um projeto de Agenda de Contatos desenvolvido em Django, com o objetivo de praticar e aplicar conceitos de CRUD (Create, Read, Update e Delete).
 
 🚀 Tecnologias utilizadas
 ```
-Django — Framework web principal
-Pillow — Para manipulação de imagens (ex: fotos dos contatos)
-Faker — Para geração de dados aleatórios de teste
+○ Django — Framework web principal
+○ Pillow — Para manipulação de imagens (ex: fotos dos contatos)
+○ Faker — Para geração de dados aleatórios de teste
 ```
 
 <h1>
@@ -50,12 +53,12 @@ http://127.0.0.1:8000/
 </h1>
 
 ```
-Cadastro de contatos
-Listagem de contatos
-Edição de contatos
-Exclusão de contatos
-Busca de contatos
-Upload de foto de perfil (usando Pillow)
+○ Cadastro de contatos
+○ Listagem de contatos
+○ Edição de contatos
+○ Exclusão de contatos
+○ Busca de contatos
+○ Upload de foto de perfil (usando Pillow)
 ```
 
 <h2>
@@ -76,7 +79,7 @@ Certifique-se que a biblioteca Pillow está instalada para gerenciar imagens.
 Este projeto é apenas para fins de estudo.
 ```
 
-
+<br><br><br>
 
 <h1>
     📒 Contacts Agenda Project (EN)
@@ -85,9 +88,9 @@ This is a Contacts Agenda project developed with Django, aiming to practice and 
 
 🚀 Technologies used
 ```
-Django — Main web framework
-Pillow — For image handling (e.g., contact profile pictures)
-Faker — For generating random test data
+○ Django — Main web framework
+○ Pillow — For image handling (e.g., contact profile pictures)
+○ Faker — For generating random test data
 ```
 
 <h2>
@@ -132,12 +135,12 @@ http://127.0.0.1:8000/
 </h2>
 
 ```
-Create new contacts
-List all contacts
-Edit existing contacts
-Delete contacts 
-Search for contacts 
-Upload contact profile picture (using Pillow)
+○ Create new contacts
+○ List all contacts
+○ Edit existing contacts
+○ Delete contacts 
+○ Search for contacts 
+○ Upload contact profile picture (using Pillow)
 ```
 
 <h2>
