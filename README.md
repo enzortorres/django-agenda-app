@@ -4,6 +4,8 @@
 
 Este é um projeto de Agenda de Contatos desenvolvido em Django, com o objetivo de praticar e aplicar conceitos de CRUD (Create, Read, Update e Delete).
 
+Hospedado em: <a href="https://enzortorres.pythonanywhere.com" target="_blank">enzortorres.pythonanywhere.com</a>
+
 🚀 Tecnologias utilizadas
 ```
 ○ Django — Framework web principal
@@ -85,6 +87,8 @@ Este projeto é apenas para fins de estudo.
     📒 Contacts Agenda Project (EN)
 </h1>
 This is a Contacts Agenda project developed with Django, aiming to practice and apply CRUD (Create, Read, Update, and Delete) concepts.
+
+Hosted at: <a href="https://enzortorres.pythonanywhere.com" target="_blank">enzortorres.pythonanywhere.com</a>
 
 🚀 Technologies used
 ```
